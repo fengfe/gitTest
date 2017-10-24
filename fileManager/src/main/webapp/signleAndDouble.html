@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>单双击事件</title>
+<script type="text/javascript">
+	var flag=0;
+	function clickTest(){
+	 	if(!flag){
+	 		setTimeout("tt2();",300);
+	 			}
+	 		flag++;
+	 	console.log("flag="+flag)
+		}
+	function tt2(){
+		debugger
+ 		if(flag==1){
+ 			console.log("aflag="+flag)
+ 			singleClick();
+ 		}else{
+ 			console.log("bflag="+flag)
+ 			dobuleClick();
+ 			}
+		}
+	
+	function singleClick(){
+ 		var result=document.getElementById('result');
+ 		result.innerHTML=result.innerHTML+"click<br>";
+ 		reset();
+		}
+	function dobuleClick(){
+ 		var result=document.getElementById('result');
+ 		result.innerHTML=result.innerHTML+"dobule click<br>";
+ 		reset();
+		}
+	function reset(){
+ 		flag=0;
+		}
+	
+</script>
+
+
+</head>
+<body>
+	<input type="button" ondblclick="clickTest();" onclick="clickTest();" value="click test" />
+	<div id="result"></div> 
+</body>
+</html>

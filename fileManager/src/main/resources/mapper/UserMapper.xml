@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bankledger.login.dao.LoginDao">
+	<!-- 根据用户名查询用户 -->
+	<select id="findObjectByName" resultType="com.bankledger.login.entity.User">
+		select * from user where userName=#{userName}
+	</select>
+	
+	<!-- 	查询用户是否存在 -->
+	<select id="isExist" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(*) from user where userName=#{userName}
+	</select>
+</mapper>

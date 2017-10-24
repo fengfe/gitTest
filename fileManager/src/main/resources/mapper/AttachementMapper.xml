@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+ classpath:mapper/AttachementMapper.xml
+ -->
+<mapper namespace="com.bankledger.attachement.dao.AttachementDao">
+
+    <select id="findObjects" 
+    resultType="com.bankledger.attachement.entity.FileMag">
+       select *
+       from file f
+       <where>
+       	<if test="_parameter!=null and _parameter!=''">
+       		f.fileName like concat("%", #{fileName},"%")
+       	</if>
+       	</where>
+       order by createdTime desc
+       limit #{startIndex},#{pageSize};	
+    </select>
+    <!-- 根据名字查找文件 -->
+    <select id="findSomeObjects" 
+    		resultType="com.bankledger.attachement.entity.FileMag">
+    	select *
+    	from file f 
+    	<where>
+    		<if test="_parameter!=null and _parameter=''" >
+    		f.fileName like CONCAT ( "%",#{fileName},"%")
+    		</if>
+    	</where>
+    	ORDER by f.createdTime DESC
+    	limit #{pageObject.startIndex},#{pageObject.pageSize}
+    </select>
+    <select id="findObjectByDisgest" 
+      resultType="java.lang.Integer">
+      select count(*)
+      from file
+      where fileDisgest=#{fileDisgest}
+    </select>
+    
+    <select id="findFileById"
+     resultType="com.bankledger.attachement.entity.FileMag">
+       select *
+       from file
+       where id=#{id}
+    </select>
+    
+    <insert id="insertObject" 
+    parameterType="com.bankledger.attachement.entity.FileMag">
+    
+       insert into file
+       (id,title,fileName,contentType,
+        filePath,fileDisgest
+        ,createdTime,modifiedTime,
+        createdUser,modifiedUser,size)
+        values(
+        #{id},#{title},#{fileName},#{contentType},
+        #{filePath},#{fileDisgest},NOW(),
+        #{modifiedTime},#{createdUser},#{modifiedUser},#{size})
+    </insert>
+    
+    <!-- 获得记录总数 -->
+    
+  <select id="getRowCounts" 
+  resultType="java.lang.Integer">
+      select count(*) from file f
+       <where>
+        <if test="_parameter!=null and _parameter!=''">
+            f.fileName like CONCAT ("%",#{fileName},"%")
+        </if>
+      </where>
+  </select>
+    
+</mapper> 

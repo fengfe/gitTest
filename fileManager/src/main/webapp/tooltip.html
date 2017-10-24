@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head>
+   <title>Bootstrap 实例 - 提示工具（Tooltip）插件</title>
+   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <script src="jquery/jquery-3.2.1.min.js"></script>
+   <script src="bootstrap/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+   	<h4>提示工具（Tooltip）插件 - 锚</h4>
+   	这是一个 <a href="#" class="tooltip-test" data-toggle="tooltip" 
+   title="弹出默认"> 默认的 Tooltip</a>.
+	这是一个 <a href="#" class="tooltip-test" data-toggle="tooltip" 
+   data-placement="left" title="弹出左侧的 ">左侧的 Tooltip</a>.
+	这是一个 <a href="#" data-toggle="tooltip" data-placement="top" 
+   title="弹出顶部的 ">顶部的 Tooltip</a>.
+	这是一个 <a href="#" data-toggle="tooltip" data-placement="bottom" 
+   title="弹出底部的 Tooltip">底部的 Tooltip</a>.
+	这是一个 <a href="#" data-toggle="tooltip" data-placement="right" 
+   title="弹出右侧的 Tooltip">右侧的 Tooltip</a><br>
+   <h4>提示工具（Tooltip）插件 - 按钮</h4>
+   <button type="button" class="btn btn-default-lg" data-toggle="tooltip" 
+   title="默认的 Tooltip">默认的 Tooltip</button>
+   <button type="button" class="btn btn-default-lg" data-toggle="tooltip" 
+   data-placement="left" title="左侧的 Tooltip-ms"> 左侧的 Tooltip</button>
+   <button type="button" class="btn btn-default-sm" data-toggle="tooltip" 
+   data-placement="top" title="顶部的 Tooltip">顶部的 Tooltip</button>
+   <button type="button" class="btn btn-default-xs" data-toggle="tooltip" 
+   data-placement="bottom" title="底部的 Tooltip">底部的 Tooltip</button>
+   <button type="button" class="btn btn-default" data-toggle="tooltip" 
+   data-placement="right" title="右侧的 Tooltip"> 右侧的 Tooltip</button>
+
+   
+   <div style="padding: 100px 100px 10px;">
+	   这是一个 <a href="#" class="tooltip-show" data-toggle="tooltip" 
+     	 title="show">Tooltip 方法 show   </a>.
+
+   	这是一个 <a href="#" class="tooltip-hide" data-toggle="tooltip" 
+      data-placement="left" title="hide">Tooltip 方法 hide   </a>.
+
+   	这是一个 <a href="#" class="tooltip-destroy" data-toggle="tooltip" 
+      data-placement="top" title="destroy">Tooltip 方法 destroy   </a>.
+
+   	这是一个 <a href="#" class="tooltip-toggle" data-toggle="tooltip" 
+      data-placement="bottom" title="toggle">Tooltip 方法 toggle   </a>.   
+      <br><br><br><br><br><br>
+   <p class="tooltip-options" >
+      	这是一个 <a href="#" data-toggle="tooltip" 
+      	title="<h2>'am Header2 </h2>">'Tooltip 方法 options</a>.</p>
+	</div>
+   <script>
+   	  $(function () { $("[data-toggle='tooltip']").tooltip(); });
+   	  $(function () { $('.tooltip-show').tooltip('show');});
+      $(function () { $('.tooltip-hide').tooltip('hide');});
+      $(function () { $('.tooltip-destroy').tooltip('destroy');});
+      $(function () { $('.tooltip-toggle').tooltip('toggle');});
+      $(function () { $(".tooltip-options a").tooltip({html : true });
+      });
+   </script>
+   </body>
+   </html>
